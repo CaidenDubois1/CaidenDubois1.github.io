@@ -221,6 +221,7 @@ function drawRobot() {
       player.y - hitDy,
       player.width,
       player.height
+      
     );
   } else {
     //for running to the left you mirror the image
