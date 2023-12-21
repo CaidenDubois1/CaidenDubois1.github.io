@@ -108,8 +108,20 @@
 				positionY;
 				changeBoxText(points)
 				points = points + 1;
-				speed = speed + .5;
-				speedY = speedY + .5;
+				if(speed > 0){
+					speed = speed + .05
+				}
+				else{
+					speed = speed - .05
+				}
+				
+				if(speedY > 0){
+					speedY = speedY + .05
+				}
+				else{
+					speedY = speedY - .05
+				}
+
 			};
 		})();
 	</script>
