@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <script>
+    function boxRandomGradiantChange(){
+    var R, G, B, R2, G2, B2;
+
+function firstValue(){
+  if (R !== undefined && G !== undefined && B !== undefined) {
+   
+    R2 = R;
+    G2 = G;
+    B2 = B;
+  } else {
+
+    R = Math.floor(Math.random() * 256);
+    G = Math.floor(Math.random() * 256);
+    B = Math.floor(Math.random() * 256);
+  }
+}
+
+
+function secondNumbers(){
+  R2 = Math.floor(Math.random() * 256);
+  G2 = Math.floor(Math.random() * 256);
+  B2 = Math.floor(Math.random() * 256);
+} 
+
+function diff(){
+  var newValR = ((R - R2) * -1)/100;
+  var newValG = ((G - G2) * -1)/100;
+  var newValB = ((B - B2) * -1)/100;
+  return [newValR, newValG, newValB];
+}
+
+function colorCalcAndChanges(){   
+  firstValue();
+  secondNumbers();
+  return diff();
+}
+firstValue();
+console.log(colorCalcAndChanges());
+
+    function calculations(){
+  var result = colorCalcAndChanges(); 
+  R = R + result[0];
+  G = G + result[1]; 
+  B = B + result[2]; 
+
+  var r = Math.min(255, Math.max(0, Math.round(R)));
+  var g = Math.min(255, Math.max(0, Math.round(G)));
+  var b = Math.min(255, Math.max(0, Math.round(B)));
+
+  document.getElementById('mydiv').style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+}
+ function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
+
+runFunctions();
+      async function runFunctions() {
+  for (var i = 0; i < 100; i++) {
+    calculations();
+    await delay(10); 
+  }
+  boxRandomGradiantChange();
+}
+  }
+    
+    
+  </script>
+</head>
+<body onload="boxRandomGradiantChange()">
+
+<div id="mydiv" style="background-color:red; width:2000px; height: 1200px;"></div>
+
+</body>
+</html>
+
+
