@@ -122,8 +122,10 @@ function createMarker(x, y){
 
 
   marker.onPlayerCollision = function (){
-    startLevel()
-    marker.fadeOut();
+    createMarker(2400, groundY - 50)
+    reward()
+    enemy()
+    saw()
 }
 marker.onProjectileCollision =  function (){
   
@@ -151,6 +153,7 @@ var levelObjects = level.gameItems
       }
     }
     startLevel();
+    
   };
 };
 
