@@ -1,0 +1,19 @@
+#board {
+    background: black;
+    width: 1920px;
+    height: 1080px;
+    left: 0px;
+    top: 0px;
+}
+
+
+.circle {
+    background: blue;
+    width: 7px;
+    height: 7px;
+    border-radius: 10px;
+    position: absolute;
+}
+body{
+    background: black;
+}
