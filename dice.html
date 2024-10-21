@@ -4,47 +4,66 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <div id = "dieID"></div>
+  <div id = "dieID2"></div>
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script>  
-  $('<div>')
+ function rollDie(dieID){
+    $('#dieID').empty();
+    $('#dieID2').empty();
+ var randomNum = Math.ceil(Math.random() * 6)
+
+    if (randomNum === 1) {
+    makeDot(40, 40, dieID);
+}
+else if (randomNum === 2) {
+    makeDot(15, 15, dieID); 
+    makeDot(65, 65, dieID); 
+}
+else if (randomNum === 3) {
+    makeDot(15, 15, dieID); 
+    makeDot(65, 65, dieID); 
+    makeDot(40, 40, dieID);
+}
+else if (randomNum === 4) {
+    makeDot(65, 65, dieID); 
+    makeDot(15, 15, dieID); 
+    makeDot(15, 65, dieID); 
+    makeDot(65, 15, dieID); 
+}
+else if (randomNum === 5) {
+    makeDot(40, 40, dieID); 
+    makeDot(65, 65, dieID);
+    makeDot(15, 15, dieID); 
+    makeDot(15, 65, dieID); 
+    makeDot(65, 15, dieID); 
+}
+else if (randomNum === 6) {
+    makeDot(40, 15, dieID);
+    makeDot(40, 65, dieID);
+    makeDot(65, 65, dieID); 
+    makeDot(15, 15, dieID); 
+    makeDot(15, 65, dieID); 
+    makeDot(65, 15, dieID);
+}
+  
+    function makeDot(top, left) {
+         $('<div>')
     .css("height", 15)
     .css("width", 15)
     .css("background-color", "black")
     .css("position", "absolute")
-    .css('top', 40)
-    .css('left', 42)
+    .css('top', top)
+    .css('left', left)
     .appendTo("#dieID");
-    
-    
-    function makeDot(randomNum) {
-    var randomNum = Math.ceil(Math.random() * 6)    
-        if (randomNum === 1) {
-    makeDot(50, 50, dieID); // middle middle
-}
-else if (randomNum === 2) {
-    makeDot(25, 25, dieID); // top left
-    makeDot(75, 75, dieID); // bottom right
-}
-else if (randomNum === 3) {
-    makeDot(25, 25, dieID); // top left
-    makeDot(75, 75, dieID); // bottom right
-    makeDot(50, 50, dieID); // middle middle
-}
-else if (randomNum === 4) {
-    makeDot(75, 75, dieID); // bottom right
-    makeDot(25, 25, dieID); // top left
-    makeDot(25, 75, dieID); // bottom left
-    makeDot(75, 25, dieID); // top right
-}
-else if (randomNum === 5) {
-    makeDot(50, 50, dieID); // middle middle
-    makeDot(75, 75, dieID); // bottom right
-    makeDot(25, 25, dieID); // top left
-    makeDot(25, 75, dieID); // bottom left
-    makeDot(75, 25, dieID); // top right
-}
     }
-    makeDot()
+ }
+$("#dieID").on("click", handlerFn);
+
+
+function handlerFn() {
+rollDie()
+}
+
 </script>
     <style>
     #dieID {
@@ -52,6 +71,14 @@ else if (randomNum === 5) {
         width: 100px;
         background-color: rgb(0, 255, 149); /* feel free to change this */
         position: relative;
+    }
+    
+    #dieID2 {
+        height: 100px;
+        width: 100px;
+        background-color: rgb(0, 255, 149); /* feel free to change this */
+        position: absolute;
+        top: 120px;
     }
 </style>
 </head>
