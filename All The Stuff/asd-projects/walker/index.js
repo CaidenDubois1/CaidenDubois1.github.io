@@ -42,7 +42,7 @@ function runProgram(){
     repositionGameItem()
     redrawGameItem()
     wall()                                                                
-
+    playerColisions()
   }
   function wall() {
     if (walker.positionX <= 0){
@@ -120,17 +120,17 @@ function runProgram(){
  
  function handleKeyDown(event) {
          if (event.which === KEY.UP) {
-          walker.speedY = -5;
+          walker.speedY = -10;
         }
          if (event.which === KEY.DOWN) {
-          walker.speedY = 5;
+          walker.speedY = 10;
          
         }
          if (event.which === KEY.LEFT) {
-          walker.speedX = 5;
+          walker.speedX = 10;
         }
          if (event.which === KEY.RIGHT) {
-          walker.speedX = -5;
+          walker.speedX = -10;
         }
         
          if (event.which === KEY.W) {
@@ -149,7 +149,22 @@ function runProgram(){
           walker2.speedX = 5;  }
     
   }
+  function playerColisions (walker){
+    if (walker.positionX = walker2.postionX)  {
+      endGame()
+    }
+    if (walker.positionX = walker2.postionX)  {                    
+      endGame()
+    }
+    if (walker.positionY = walker2.postionY)  {
+      endGame()
+    }
+    if (walker.positionY = walker2.postionY)  {
+      endGame()
+    }
 
+
+  }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -166,6 +181,7 @@ function runProgram(){
     $("#walker2").css("top", walker2.positionY);
     $("#walker2").css("left", walker2.positionX);
   }
+  
   
   function endGame() {
     // stop the interval timer
