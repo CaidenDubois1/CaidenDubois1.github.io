@@ -134,36 +134,25 @@ function runProgram(){
         }
         
          if (event.which === KEY.W) {
-          walker2.speedY = -5;
+          walker2.speedY = -10;
          
         }
          if (event.which === KEY.S) {
-          walker2.speedY = 5;
+          walker2.speedY = 10;
          
         }
          if (event.which === KEY.A) {
-          walker2.speedX = -5;
+          walker2.speedX = -10;
           
         }
          if (event.which === KEY.D) {
-          walker2.speedX = 5;  }
+          walker2.speedX = 10;  }
     
   }
   function playerColisions (walker){
-    if (walker.positionX = walker2.postionX)  {
+    if (walker.positionX === walker2.postionX && walker.positionY === walker2.postionY)  {
       endGame()
     }
-    if (walker.positionX = walker2.postionX)  {                    
-      endGame()
-    }
-    if (walker.positionY = walker2.postionY)  {
-      endGame()
-    }
-    if (walker.positionY = walker2.postionY)  {
-      endGame()
-    }
-
-
   }
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
