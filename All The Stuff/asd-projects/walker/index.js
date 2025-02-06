@@ -41,8 +41,8 @@ function runProgram(){
   function newFrame() {
     repositionGameItem()
     redrawGameItem()
-    wall()                                                                
-    playerColisions()
+    wall()               
+    playerDistance(walker, walker2)                                                 
   }
   function wall() {
     if (walker.positionX <= 0){
@@ -120,40 +120,71 @@ function runProgram(){
  
  function handleKeyDown(event) {
          if (event.which === KEY.UP) {
-          walker.speedY = -10;
+          walker.speedY = -3;
         }
          if (event.which === KEY.DOWN) {
-          walker.speedY = 10;
+          walker.speedY = 3;
          
         }
          if (event.which === KEY.LEFT) {
-          walker.speedX = 10;
+          walker.speedX = 3;
         }
          if (event.which === KEY.RIGHT) {
-          walker.speedX = -10;
+          walker.speedX = -3;
         }
         
          if (event.which === KEY.W) {
-          walker2.speedY = -10;
+          walker2.speedY = -3;
          
         }
          if (event.which === KEY.S) {
-          walker2.speedY = 10;
+          walker2.speedY = 3;
          
         }
          if (event.which === KEY.A) {
-          walker2.speedX = -10;
+          walker2.speedX = -3;
           
         }
          if (event.which === KEY.D) {
-          walker2.speedX = 10;  }
+          walker2.speedX = 3;  }
     
   }
-  function playerColisions (walker){
-    if (walker.positionX === walker2.postionX && walker.positionY === walker2.postionY)  {
-      endGame()
+  function playerDistance(walker, walker2){
+    var posX;
+    var posY;
+    var pos2X;
+    var pos2Y;
+    if (walker.postionX < 0) {
+      posX = walker.postionX * -1
     }
-  }
+    if (walker.postionY < 0) {
+      posY = walker.postionY * -1
+    }
+    if (walker2.postionX < 0) {
+      pos2X = walker2.postionX * -1
+    }
+    if (walker2.postionY < 0) {
+      pos2Y = walker2.postionY * -1
+    } 
+    else {
+      posX = walker.positionX;
+      posY = walker.positionY;
+      pos2X = walker2.positionX;
+      pos2Y = walker2.positionY;
+    }
+    var Xdif = posX - pos2X;
+    var Ydif = posY - pos2Y;
+    var sqX = Xdif * Xdif;
+    var sqY = Ydif * Ydif;
+    var finval = Math.sqrt(sqX + sqY); 
+    console.log(finval)
+    
+    if (finval < 50) {
+      console.log("colision")
+    }
+  }  
+  
+  
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -179,5 +210,18 @@ function runProgram(){
     // turn off event handlers
     $(document).off();
   }
-  
+  /* global $, sessionStorage */
+
 }
+// console.log(walker.positionX)
+// console.log(walker.positionY)
+// console.log(walker2.positionX)
+// console.log(walker2.positionY)
+// console.log(posX)
+// console.log(posY)
+// console.log(pos2X)
+// console.log(pos2Y)
+// console.log(Xdif)
+// console.log(Ydif)
+// console.log(sqX)
+// console.log(sqY)
