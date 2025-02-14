@@ -8,7 +8,7 @@ function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
 
   // Constant Variables
-  var FRAME_RATE = 60;
+  var FRAME_RATE = 180;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   
   // Game Item Objects
@@ -172,14 +172,17 @@ function runProgram(){
       pos2X = walker2.positionX;
       pos2Y = walker2.positionY;
     }
-    var Xdif = posX - pos2X;
+    var Xdif = ((posX * -1) + 850) - pos2X;
     var Ydif = posY - pos2Y;
     var sqX = Xdif * Xdif;
     var sqY = Ydif * Ydif;
     var finval = Math.sqrt(sqX + sqY); 
-    console.log(finval)
     
     if (finval < 50) {
+      walker.postionX = 0;
+      walker.postionY = 0;
+      walker2.postionX = 0;
+      walker2.postionY = 0;
       console.log("colision")
     }
   }  
@@ -193,7 +196,6 @@ function runProgram(){
     walker.positionY += walker.speedY;
     walker2.positionX += walker2.speedX;
     walker2.positionY += walker2.speedY;
-
   } 
   function redrawGameItem (){
     $("#walker").css("top", walker.positionY);
