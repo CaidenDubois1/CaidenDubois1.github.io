@@ -110,7 +110,7 @@ function moveSnake() {
   var nextSnakeSquare = snake.body[i - 1];
   var nextRow = snake.body[i - 1].row;
   var nextColumn = snake.body[i - 1].column;
-  var nextDirection = snake.body[i -1].direction;
+  var nextDirection = snake.body[i - 1].direction;
 
   snakeSquare.direction = nextDirection;
   snakeSquare.row = nextRow;
@@ -372,6 +372,18 @@ function getRandomAvailablePosition() {
 
   return randomPosition;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 function calculateHighScore() {
   // retrieve the high score from session storage if it exists, or set it to 0
