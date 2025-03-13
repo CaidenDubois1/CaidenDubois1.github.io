@@ -22,7 +22,7 @@ function applyAndRender() {
   // Multiple TODOs: Call your apply function(s) here
 applyFilterNoBackground(reddify)
 applyFilterNoBackground(decreaseBlue)
-applyFilterNoBackground(IncreaseGreenByBlue)
+applyFilter(increaseGreenByBlue)
 
   // do not change the below line of code
   render($("#display"), image);
@@ -44,10 +44,7 @@ function applyFilter (filterFunction){
       }
     }
 }
-function filterFunction(applyFilter){
-  filterFunction(rgbNumbers)
- reddify()
-}
+
 
 // TODO 7: Create the applyFilterNoBackground function
 function applyFilterNoBackground(filterFunction){
@@ -55,10 +52,12 @@ function applyFilterNoBackground(filterFunction){
   for(var i = 0; i < image.length; i++){
     var row = image[i];
       for(var x = 0; x < row.length; x++){
-        var rgbString = image[i][x];
+        var rgbString = row[x];
+        if (rgbString !== backgroundColor){
         var rgbNumbers = rgbStringToArray(rgbString);
-        if (backgroundColor !== rgbNumbers){
         filterFunction(rgbNumbers)
+        rgbString = rgbArrayToString(rgbNumbers)
+        row[x] = rgbString;
         }
       }
 
@@ -74,46 +73,16 @@ return num > 255  ? 255 : num < 0 ? 0 : num
 
 // TODO 3: Create reddify function
 function reddify(arr){
-  var backgroundColor = image[0][0];
-  for(var i = 0; i < image.length; i++){
-    var row = image[i];
-      for(var x = 0; x < row.length; x++){
-        var rgbString = image[i][x];
-        var rgbNumbers = rgbStringToArray(rgbString);
-        rgbNumbers[RED] = 200;
-        rgbString = rgbArrayToString(rgbNumbers);
-        image[i][x] = rgbString;
-  
-  
-        
-      }
-    }
+        arr[RED] = 200;
+
  }
 
 // TODO 6: Create more filter functions
 function decreaseBlue(arr){
-  for(var i = 0; i < image.length; i++){
-    var row = image[i];
-      for(var x = 0; x < row.length; x++){
-        var rgbString = image[i][x];
-        var rgbNumbers = rgbStringToArray(rgbString);
-        rgbNumbers[BLUE] = rgbNumbers[BLUE] - 50;
-        rgbString = rgbArrayToString(rgbNumbers);
-        image[i][x] = rgbString;
-      }
-    }
+arr[BLUE] = keepInBounds(arr[BLUE] - 50);
  }
- function IncreaseGreenByBlue(arr){
-  for(var i = 0; i < image.length; i++){
-    var row = image[i];
-      for(var x = 0; x < row.length; x++){
-        var rgbString = image[i][x];
-        var rgbNumbers = rgbStringToArray(rgbString);
-        rgbNumbers[GREEN] = keepInBounds(rgbNumbers[GREEN] + rgbNumbers[BLUE]);
-        rgbString = rgbArrayToString(rgbNumbers);
-        image[i][x] = rgbString;
-      }
-    }
+ function increaseGreenByBlue(arr){
+        arr[GREEN] = keepInBounds(arr[GREEN] + arr[BLUE]);
  }
 
 
